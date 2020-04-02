@@ -15,9 +15,9 @@ git clone "https://aur.archlinux.org/whatsapp-web-desktop"
 PKGS=(
 
 	#CRUCIAL				
-	#'linux-lts'
-	#'linux-lts-headers'
-	#'linux-firmware'	
+	'linux-lts'
+	'linux-lts-headers'
+	'linux-firmware'	
 	'hardinfo'								
 	'neofetch'								
 	'speedtest-cli'							
