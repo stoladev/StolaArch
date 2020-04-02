@@ -64,6 +64,10 @@ PKGS=(
 	#MEDIA
 	'vlc'
 	'obs-studio'
+	
+	#EMAIL & CHAT
+	'thunderbird'
+	'discord'
 
 	#GAMES
 	'minecraft-launcher'
