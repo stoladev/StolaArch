@@ -56,9 +56,7 @@ PKGS=(
 	'playonlinux'
 
 	# SECURITY
-	'bleachbit'
-	'veracrypt'
-	'deluge'
+	# Wait a minute... why would I tell you what security packages I use?
 
 	# MEDIA
 	'vlc'
