@@ -30,7 +30,23 @@ PKGS=(
 
     # Nvim
     'neovim'
+    'neovim-remote'
+    'python'
+    'python2'
+    'python-pip'
+    'python2-pip'
     'python-pynvim'
+    'texlive-most'
+
+
+    # Emacs
+    'emacs27-git'
+
+
+    # Development
+    'git'
+    'xorg-xmodmap'
+
 
     # FZF
     'fzf'
@@ -45,12 +61,36 @@ PKGS=(
 
 
     # FTP
+    'lftp'
 	'filezilla'
 
     
 	# Email and Chat
 	'thunderbird'
 	'discord'
+    'whatsapp-nativefier'
+
+
+    # Desktop Environments 
+    'i3'
+
+
+    # Terminal
+    'termite'
+    'tmux'
+    'awk'
+    'perl'
+    'sed'
+
+
+    # Display Manager
+    'ly'
+
+
+    # Fonts
+    'ttf-iosevka'
+    'ttf-iosevka-term'
+    'powerline-fonts'
 
 
     # iPhone Mounting
@@ -90,4 +130,16 @@ done
     # {LET USER CHOOSE /boot/ or /boot/efi/}/grub/grub.cfg
 
 
+# Doom Emacs Installation
+# TODO Prompt user if they want to install Doom Emacs
+git clone --depth 1 "https://github.com/hlissner/doom-emacs" ~/.emacs.d
+~/.emacs.d/bin/doom install
 
+
+# Enabling Ly
+# TODO systemctl enable ly
+# systemctl disable getty@tty2.service
+
+
+# Tmux
+# TODO Setting up Tmux with gpakosz/.tmux
