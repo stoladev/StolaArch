@@ -1,100 +1,61 @@
 PKGS=(
 
-    # LTS Kernel
+    # LTS Kernel Safety
 	'linux-lts'
 	'linux-lts-headers'
 	'linux-firmware'
 
 
-    # Hardware and Internet
-	'hardinfo'
-	'speedtest-cli'
-
-
-	# Audio and Video
-	'alsa-plugins'
+    # Default Programs
+    'dwm'                             # TODO Automatically set up
+    'ly'                              # TODO Automatically set up
+    'zsh'                             # TODO Automatically set up
+    # TODO Automatically set up `oh-my-zosh'
+	'filezilla'
+	'thunderbird'
+	'discord'
+    'whatsapp-nativefier-dark'
 	'pulseaudio'
-	'pulseaudio-alsa'
-	'pavucontrol'
-	'vlc'
 	'obs-studio'
+    'mpv'
 
 
-	# Services/Hosts Discovery
-    'avahi'
-
-
-    # Compilers
-    'cmake'
-
-
-    # Nvim
+    # Development
     'neovim'
-    'neovim-remote'
+    'vifm'
+    'emacs27-git'
+    'texlive-most'
+    'zathura'
+    'xcape'
+    'xmodmap'
+    'git'
+    'xorg-xmodmap'
     'python'
     'python2'
     'python-pip'
     'python2-pip'
     'python-pynvim'
-    'texlive-most'
+	'speedtest-cli'
 
 
-    # Emacs
-    'emacs27-git'
-
-
-    # Development
-    'git'
-    'xorg-xmodmap'
-
-
-    # FZF
+    # Fuzzy File Searching
     'fzf'
     'fd'
     'ripgrep'
-    'the_silver_searcher'
-
-
-    # Bash
-    'bash-completion'
-	'file-roller'
-
-
-    # FTP
-    'lftp'
-	'filezilla'
-
-    
-	# Email and Chat
-	'thunderbird'
-	'discord'
-    'whatsapp-nativefier'
-
-
-    # Desktop Environments 
-    'i3'
-
-
-    # Terminal
-    'termite'
-    'tmux'
-    'awk'
-    'perl'
-    'sed'
-
-
-    # Display Manager
-    'ly'
 
 
     # Fonts
     'ttf-iosevka'
     'ttf-iosevka-term'
+    'ttf-symbola'
+    'noto-fonts-emoji'
+    'ttf-joypixels'
     'powerline-fonts'
 
 
-    # iPhone Mounting
-	# 'libimobiledevice'
+	# Misc Dependencies
+    'avahi'
+    'cmake'
 
 	)
 
