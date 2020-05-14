@@ -16,7 +16,7 @@ PKGS=(
     'whatsapp-nativefier-dark'
 	'pulseaudio'
 	'obs-studio'
-    'mpv'
+    'vlc'
     'maim'
 
 
@@ -36,6 +36,7 @@ PKGS=(
     'nodejs'
     'yarn'
 	'speedtest-cli'
+    'tk'
 
 
     # Fuzzy File Searching
@@ -63,9 +64,8 @@ PKGS=(
 # System Update 
 # TODO Update mirrorlist config to US 
 # TODO Add multilib through pacman.conf
-# TODO sudo pacman-key --init
-# TODO sudo pacman-key --populate archlinux
-# TODO sudo pacman -Syu
+sudo pacman-key --init && sudo pacman-key --populate archlinux
+sudo pacman -Syu --noconfirm
 
 
 # YAY Installation
@@ -82,24 +82,15 @@ for PKG in "${PKGS[@]}"; do
 done
 
 
-# PKG Remover
-# TODO Add PKG_REMOVE, removing unnecessary packages
+# Enabling Ly
+systemctl enable ly.service && systemctl disable getty@tty2.service
+
+
+# Tmux Plugin Manager
+# TODO Add this as a check and auto-install, just like init.vim Plug
+git clone "https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
 
 
 # Oh My Zsh Installation
-# TODO Automatically set up `oh-my-zsh'
-
-
-# Grub Bootloader Update
-# TODO Add sudo grub-mkconfig -o
-    # {LET USER CHOOSE /boot/ or /boot/efi/}/grub/grub.cfg
-
-
-# Enabling Ly
-# TODO systemctl enable ly
-systemctl enable ly.service && systemctl disable getty@tty2.service
-# systemctl disable getty@tty2.service
-
-
-# Tmux
-
+# TODO Add this as a check and auto-install, just like init.vim Plug
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
