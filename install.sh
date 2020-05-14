@@ -10,7 +10,6 @@ PKGS=(
     'dwm'                             # TODO Automatically set up
     'ly'                              # TODO Automatically set up
     'zsh'                             # TODO Automatically set up
-    # TODO Automatically set up `oh-my-zosh'
 	'filezilla'
 	'thunderbird'
 	'discord'
@@ -18,23 +17,24 @@ PKGS=(
 	'pulseaudio'
 	'obs-studio'
     'mpv'
+    'maim'
 
 
     # Development
+    'git'
     'neovim'
-    'vifm'
-    'emacs27-git'
-    'texlive-most'
     'zathura'
     'xcape'
     'xmodmap'
-    'git'
     'xorg-xmodmap'
     'python'
     'python2'
     'python-pip'
     'python2-pip'
     'python-pynvim'
+    'npm'
+    'nodejs'
+    'yarn'
 	'speedtest-cli'
 
 
@@ -69,7 +69,7 @@ PKGS=(
 
 
 # YAY Installation
-cd "${HOME}" || exit
+cd "${HOME}/Git/Sources" || exit
 git clone "https://aur.archlinux.org/yay.git"
 cd "${HOME}"/yay || exit
 sudo pacman -S base-devel --noconfirm --needed
@@ -86,21 +86,20 @@ done
 # TODO Add PKG_REMOVE, removing unnecessary packages
 
 
+# Oh My Zsh Installation
+# TODO Automatically set up `oh-my-zsh'
+
+
 # Grub Bootloader Update
 # TODO Add sudo grub-mkconfig -o
     # {LET USER CHOOSE /boot/ or /boot/efi/}/grub/grub.cfg
 
 
-# Doom Emacs Installation
-# TODO Prompt user if they want to install Doom Emacs
-git clone --depth 1 "https://github.com/hlissner/doom-emacs" ~/.emacs.d
-~/.emacs.d/bin/doom install
-
-
 # Enabling Ly
 # TODO systemctl enable ly
+systemctl enable ly.service && systemctl disable getty@tty2.service
 # systemctl disable getty@tty2.service
 
 
 # Tmux
-# TODO Setting up Tmux with gpakosz/.tmux
+
