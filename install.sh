@@ -1,3 +1,7 @@
+# Automatically install:
+# pip3 black, vim-vint, yapf, flake8, pylint, jedi, doq, pydocstring
+# Add chmods:
+
 PKGS=(
 
     # LTS Kernel Safety
@@ -7,9 +11,9 @@ PKGS=(
 
 
     # Default Programs
-    'dwm'                             # TODO Automatically set up
-    'ly'                              # TODO Automatically set up
-    'zsh'                             # TODO Automatically set up
+    'ly'
+    'zsh'
+    'tmux'
 	'filezilla'
 	'thunderbird'
 	'discord'
@@ -17,7 +21,19 @@ PKGS=(
 	'pulseaudio'
 	'obs-studio'
     'vlc'
+    'scrot'
     'maim'
+    'i3-wm'
+    'i3lock'
+    'xautolock'
+    'i3status'
+    'ranger'
+    'xclip'
+    'arandr'
+    'youtube-dl'
+    'mpd'
+    'ncmpcpp'
+    'picom'
 
 
     # Development
@@ -25,18 +41,12 @@ PKGS=(
     'neovim'
     'zathura'
     'xcape'
-    'xmodmap'
     'xorg-xmodmap'
     'python'
-    'python2'
     'python-pip'
-    'python2-pip'
-    'python-pynvim'
     'npm'
-    'nodejs'
-    'yarn'
-	'speedtest-cli'
     'tk'
+    'google-cloud-sdk'
 
 
     # Fuzzy File Searching
@@ -69,9 +79,9 @@ sudo pacman -Syu --noconfirm
 
 
 # YAY Installation
-cd "${HOME}/Git/Sources" || exit
+cd "${HOME}/Git" || exit
 git clone "https://aur.archlinux.org/yay.git"
-cd "${HOME}"/yay || exit
+cd "${HOME}/Git"/yay || exit
 sudo pacman -S base-devel --noconfirm --needed
 makepkg -si --noconfirm --needed
 
@@ -83,14 +93,15 @@ done
 
 
 # Enabling Ly
-systemctl enable ly.service && systemctl disable getty@tty2.service
+sudo systemctl enable ly.service && sudo systemctl disable getty@tty2.service
 
 
 # Tmux Plugin Manager
 # TODO Add this as a check and auto-install, just like init.vim Plug
-git clone "https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+# cd "${HOME}" || exit
+# git clone "https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
 
 
 # Oh My Zsh Installation
 # TODO Add this as a check and auto-install, just like init.vim Plug
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
