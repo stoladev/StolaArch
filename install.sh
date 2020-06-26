@@ -1,3 +1,6 @@
+# TODO: Organize this into a seperate dir (Arch installation) since I am also 
+# using Ubuntu through WSL2.
+
 # Automatically install:
 # pip3 black, vim-vint, yapf, flake8, pylint, jedi, doq, pydocstring
 # Add chmods:
@@ -33,7 +36,7 @@ PKGS=(
     'youtube-dl'
     'mpd'
     'ncmpcpp'
-    'picom'
+    'amdvlk'
 
 
     # Development
@@ -44,6 +47,7 @@ PKGS=(
     'xorg-xmodmap'
     'python'
     'python-pip'
+    'python-pygame'
     'npm'
     'tk'
     'google-cloud-sdk'
