@@ -1,5 +1,11 @@
-# StolaArch
+# Shell Projects
 
-This is my personal post ArchBang installation script. I use it every time I do a clean install.
+All of my Shell projects will be located here. Any scripts that I deem "daily
+use" will not be included here; instead, they are located in my [dotfiles
+repository.](https://github.com/stoladev/dotfiles)
 
-I will update this to be used from a basic Arch installation in the future (not ArchBang). 
+## Categories
+
+- StolaArch
+    - My installation script that I run on every new Archbang installation.
+      Also contains my clean script that should be run ~ once a month.

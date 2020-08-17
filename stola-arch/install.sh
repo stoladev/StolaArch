@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # TODO: Organize this into a seperate dir (Arch installation) since I am also 
 # using Ubuntu through WSL2.
 
