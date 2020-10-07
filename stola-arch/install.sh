@@ -1,113 +1,112 @@
 #!/bin/bash
 
-# TODO: Organize this into a seperate dir (Arch installation) since I am also 
-# using Ubuntu through WSL2.
-
-# Automatically install:
-# pip3 black, vim-vint, yapf, flake8, pylint, jedi, doq, pydocstring
-# Add chmods:
 
 PKGS=(
 
+
     # LTS Kernel Safety
-	'linux-lts'
-	'linux-lts-headers'
-	'linux-firmware'
+    'linux-lts'                     # Long term support kernel
+    'linux-lts-headers'             # LTS headers
+    'linux-firmware'                # Necessary firmware
+
+
+    # Uncalled Dependencies         # Dependencies that don't get called
+    'avahi'
+    'cmake'
+    'rust'
 
 
     # Default Programs
-    'ly'
-    'zsh'
-    'tmux'
-	'filezilla'
-	'thunderbird'
-	'discord'
-    'whatsapp-nativefier-dark'
-	'pulseaudio'
-	'obs-studio'
-    'vlc'
-    'scrot'
-    'maim'
-    'i3-wm'
-    'i3lock'
-    'xautolock'
-    'i3status'
-    'ranger'
-    'xclip'
-    'arandr'
-    'youtube-dl'
-    'mpd'
-    'ncmpcpp'
-    'amdvlk'
+    'networkmanager'                # Network manager
+    'zsh'                           # Superior bash
+    'antigen'                       # Plugin manager for ZSH
+    'tmux'                          # Terminal wrapper to make CLI a breeze
+    'filezilla'                     # FTP client
+    'thunderbird'                   # Email client
+    'whatsapp-nativefier-dark'      # WhatsApp client
+    'alsa-utils'                    # Alsa utilities
+    'pulseaudio-alsa'               # Pulseaudio manager interface with alsa
+    'pulseaudio'                    # Audio manager
+    'asoundconf'                    # Default sound config that just works(TM)
+    'obs-studio'                    # Best recording software hands down
+    'vlc'                           # Audio/video codecs, player
+    'scrot'                         # Screenshotter
+    'maim'                          # Screenshotter alternative
+    'ranger'                        # CLI directory/file browser
+    'xclip'                         # Clipboard manager
+    'arandr'                        # Monitor adjuster
+    'youtube-dl'                    # Easy video/audio downloading
+    'amdvlk'                        # Graphics driver, Open
+    'vulkan-radeon'                 # Graphics driver, RADV, part of Mesa project
+    'zenith'                        # HTOP but in rust and better
+    'ncspot'                        # Spotify ncurses player
+    'qbittorrent'                   # Torrent client
 
 
     # Development
-    'git'
-    'neovim'
-    'zathura'
-    'xcape'
-    'xorg-xmodmap'
-    'python'
-    'python-pip'
-    'python-pygame'
-    'npm'
-    'tk'
-    'google-cloud-sdk'
+    'git'                           # Git access
+    'neovim'                        # Best and most malleable text editor by far
+    'zathura'                       # PDF and similar editor
+    'xcape'                         # Allows for multi-function combos, i.e. spacebar modifier
+    'xorg-xmodmap'                  # Keyboard remaps i.e. caps to escape
+    'python'                        # Python development
+    'python-pip'                    # Pip install
+    'npm'                           # Package manager for js
 
 
     # Fuzzy File Searching
-    'fzf'
-    'fd'
-    'ripgrep'
+    'fzf'                           # Fuzzy file finder
+    'fd'                            # FZF alternative with other functions
+    'ripgrep'                       # grep but with rust, blazing fast
+
+
+    # Misc Utilities
+    'ueberzug'                      # Allows image viewing within terminal
+    'picom'                         # Formerly compton; transparency engine
+    'feh'                           # Image viewer, used for background wallpapers
+    'wireguard-lts'                 # LTS version of wireguard for VPN
+    'wireguard-tools'               # Misc wireguard tools for troubleshooting
+    'font-manager'                  # Font manager
+    'qtfm'                          # Qt based file manager
 
 
     # Fonts
     'ttf-iosevka'
     'ttf-iosevka-term'
+    'ttf-iosevka-term-ss04'
     'ttf-symbola'
     'noto-fonts-emoji'
     'ttf-joypixels'
     'powerline-fonts'
 
 
-	# Misc Dependencies
-    'avahi'
-    'cmake'
-
 	)
 
 
-# System Update 
-# TODO Update mirrorlist config to US 
-# TODO Add multilib through pacman.conf
-sudo pacman-key --init && sudo pacman-key --populate archlinux
-sudo pacman -Syu --noconfirm
-
-
 # YAY Installation
-cd "${HOME}/Git" || exit
-git clone "https://aur.archlinux.org/yay.git"
-cd "${HOME}/Git"/yay || exit
-sudo pacman -S base-devel --noconfirm --needed
-makepkg -si --noconfirm --needed
+if pacman -Qs yay > /dev/null ; then
+    echo "yay is already installed."
+else
+    cd "${HOME}/git" || exit
+    git clone "https://aur.archlinux.org/yay.git"
+    cd "${HOME}/git"/yay || exit
+    sudo pacman -S base-devel --noconfirm --needed
+    makepkg -si --noconfirm --needed
+fi
 
 
 # PKG Installation
 for PKG in "${PKGS[@]}"; do
-	yay -S --noconfirm "$PKG"
+    if pacman -Qs "$PKG" > /dev/null ; then
+        echo ""$PKG" is already installed."
+    else
+        echo ""$PKG" not installed. Installing..."
+	    yay -S --noconfirm "$PKG"
+    fi
 done
 
 
-# Enabling Ly
-sudo systemctl enable ly.service && sudo systemctl disable getty@tty2.service
+# Latest Updates
+echo "Checking for updates..."
+sudo pacman -Syu --noconfirm --needed
 
-
-# Tmux Plugin Manager
-# TODO Add this as a check and auto-install, just like init.vim Plug
-# cd "${HOME}" || exit
-# git clone "https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
-
-
-# Oh My Zsh Installation
-# TODO Add this as a check and auto-install, just like init.vim Plug
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
