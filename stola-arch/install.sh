@@ -18,7 +18,8 @@ PKGS=(
 
     # Default Programs
     'networkmanager'                # Network manager
-    'zsh'                           # Superior bash
+    'zsh'                           # CLI manager
+    'i3'                            # Desktop manager
     'antigen'                       # Plugin manager for ZSH
     'tmux'                          # Terminal wrapper to make CLI a breeze
     'filezilla'                     # FTP client
@@ -83,30 +84,93 @@ PKGS=(
 	)
 
 
+# Python pip installations
+PIPS=(
+
+
+    # Formatters/Linters
+    'black'                         # Formatter
+    'flake8'                        # Linter
+    'numpy'                         # Advanced math
+    'requests'                      # HTTPS related accessibility/ease
+    'pandas'                        # Dataframe management
+    'Pillow'                        # Image classification
+    'moviepy'                       # Video classification
+
+
+	)
+
+
 # YAY Installation
+echo "Verifying yay installation..."
 if pacman -Qs yay > /dev/null ; then
-    echo "yay is already installed."
+    echo "Installation verified."
 else
+    echo "No yay installation detected. Installing..."
     cd "${HOME}/git" || exit
     git clone "https://aur.archlinux.org/yay.git"
     cd "${HOME}/git"/yay || exit
     sudo pacman -S base-devel --noconfirm --needed
     makepkg -si --noconfirm --needed
+    echo "Installation of yay complete."
 fi
 
 
+echo ""
+
+
 # PKG Installation
-for PKG in "${PKGS[@]}"; do
-    if pacman -Qs "$PKG" > /dev/null ; then
-        echo ""$PKG" is already installed."
-    else
-        echo ""$PKG" not installed. Installing..."
-	    yay -S --noconfirm "$PKG"
-    fi
+while true; do
+    read -p "Install recommended Arch packages? (y/n): " yn
+    case $yn in
+        [Yy]* )
+            for PKG in "${PKGS[@]}"; do
+                if pacman -Qs "$PKG" > /dev/null ; then
+                    echo ""$PKG" is already installed."
+                else
+                    echo ""$PKG" not installed. Installing..."
+                    yay -S --noconfirm "$PKG"
+                fi
+            done
+            break;;
+        [Nn]* )
+            break;;
+    esac
 done
 
 
-# Latest Updates
-echo "Checking for updates..."
-sudo pacman -Syu --noconfirm --needed
+echo ""
+
+
+# Python Packages
+while true; do
+    read -p "Install recommended Python packages? (y/n): " yn
+    case $yn in
+        [Yy]* )
+            for PIP in "${PIPS[@]}"; do
+            if pip list | grep -F "$PIP" > /dev/null ; then
+                echo ""$PIP" is already installed."
+            else
+                echo ""$PIP" not installed. Installing..."
+                pip install "$PIP"
+            fi
+            done
+            break;;
+        [Nn]* ) break;;
+    esac
+done
+
+
+echo ""
+
+
+# Check PKG Updates
+while true; do
+    read -p "Update system packages? (y/n): " yn
+    case $yn in
+        [Yy]* ) sudo pacman -Syu --noconfirm --needed; break;;
+        [Nn]* ) break;;
+        * ) echo "Please use y or n.";;
+    esac
+done
 
