@@ -96,6 +96,7 @@ PIPS=(
     'pandas'                        # Dataframe management
     'Pillow'                        # Image classification
     'moviepy'                       # Video classification
+    'jedi'                          # Autocompletion
 
 
 	)
