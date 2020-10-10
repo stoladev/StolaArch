@@ -184,4 +184,3 @@ done
 # TODO Neovim full setup
 # Plugin installation
 # FZF/fd installation verification
-# YCM installation (python3 ~/.config/nvim/plugged/YouCompleteMe/install.py --all)
