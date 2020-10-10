@@ -1,6 +1,9 @@
 #!/bin/bash
 
 
+# TODO add scripts to local bin
+
+
 PKGS=(
 
 
@@ -97,6 +100,8 @@ PIPS=(
     'Pillow'                        # Image classification
     'moviepy'                       # Video classification
     'jedi'                          # Autocompletion
+    'neovim'                        # Neovim support
+    'torch'                         # Pytorch
 
 
 	)
@@ -175,3 +180,8 @@ while true; do
     esac
 done
 
+
+# TODO Neovim full setup
+# Plugin installation
+# FZF/fd installation verification
+# YCM installation (python3 ~/.config/nvim/plugged/YouCompleteMe/install.py --all)
