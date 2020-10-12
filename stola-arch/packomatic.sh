@@ -56,6 +56,7 @@ PKGS=(
     'python'                        # Python development
     'python-pip'                    # Pip install
     'npm'                           # Package manager for js
+    'qtcreator'                     # Creating GUI apps with ease
 
 
     # Fuzzy File Searching
@@ -102,6 +103,9 @@ PIPS=(
     'jedi'                          # Autocompletion
     'neovim'                        # Neovim support
     'torch'                         # Pytorch
+    'pyqt5'                         # GUI builder
+    'pyqt5-tools'                   # Tools for pyqt5
+    'matplotlib'                    # Plotting library
 
 
 	)
