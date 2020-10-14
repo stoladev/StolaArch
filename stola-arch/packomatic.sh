@@ -57,6 +57,7 @@ PKGS=(
     'python-pip'                    # Pip install
     'npm'                           # Package manager for js
     'qtcreator'                     # Creating GUI apps with ease
+    'tk'                            # Tkinter for GUI handling
 
 
     # Fuzzy File Searching
